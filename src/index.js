@@ -3,8 +3,18 @@ import session from "express-session";
 import passport from "passport";
 import dotenv from "dotenv";
 import cors from "cors";
+import dbConnect from "./config/dbConnect.js";
 
 dotenv.config();
+
+// Log to verify loaded environment variables
+console.log('Environment Variables Loaded:', {
+    PORT: process.env.PORT,
+    SESSION_SECRET: process.env.SESSION_SECRET,
+    JWT_SECRET: process.env.JWT_SECRET,
+    CONNECTION_STRING: process.env.CONNECTION_STRING,
+});
+dbConnect();
 
 const app = express();
 
