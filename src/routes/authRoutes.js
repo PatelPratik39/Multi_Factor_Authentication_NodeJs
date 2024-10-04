@@ -1,5 +1,14 @@
 import { Router } from "express";
 import passport from "passport";
+import {
+  register,
+  login,
+  authStatus,
+  logout,
+  setup2FA,
+  verify2FA,
+  reset2FA
+} from "../controllers/authController.js";
 
 const router = Router();
 
@@ -23,3 +32,5 @@ router.post("/2fa/verify", verify2FA);
 
 // 2FA Route
 router.post("/2fa/reset", reset2FA);
+
+export default router;
