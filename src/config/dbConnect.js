@@ -5,7 +5,7 @@ const dbConnect = async () => {
     // console.log("MongoDB Connection String:", process.env.CONNECTION_STRING); // Log to check if it's defined
 
     const mongoDbConnection = await connect(process.env.CONNECTION_STRING);
-    console.log(`Database connected: ${mongoDbConnection.connection.host}`); // Log the host
+    console.log(`MongoDB database connected: ${mongoDbConnection.connection.host}`); // Log the host
   } catch (error) {
     console.log(`Database connection failed: ${error}`);
     process.exit(1);
