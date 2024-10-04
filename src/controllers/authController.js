@@ -6,13 +6,11 @@ export const register = async (req, res) => {
     const { username, password } = req.body;
 
     //check wheather username is present into database or not
-    const existingUser = await User.findOne({username});
-    if(existingUser){
-        return res
-          .status(400)
-          .json({
-            message: "Username already exists. Please choose another one."
-          });
+    const existingUser = await User.findOne({ username });
+    if (existingUser) {
+      return res.status(400).json({
+        message: "Username already exists. Please choose another one."
+      });
     }
     // create Hash password from provided password
     const hashPassword = await bcrypt.hash(password, 10);
@@ -30,7 +28,16 @@ export const register = async (req, res) => {
   }
 };
 
-export const login = async (req, res) => {};
+export const login = async (req, res) => {
+  console.log("The Authenticated user is : ", req.user);
+  res
+    .status(200)
+    .json({
+      message: "User logged in successfully!!",
+      username: req.user.username,
+      isMfaActive: req.user.isMfaActive
+    });
+};
 
 export const authStatus = async (req, res) => {};
 
